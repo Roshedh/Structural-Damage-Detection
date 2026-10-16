@@ -33,6 +33,7 @@ export default function MarketingHeader() {
 
         {/* Desktop Nav */}
         <nav className="hidden md:flex items-center gap-8">
+          <Link href="/#scan-section" className="text-sm font-semibold text-emerald-600 dark:text-emerald-400 hover:text-emerald-500 transition-colors">Scan</Link>
           <Link href="#features" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Features</Link>
           <Link href="#modules" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Modules</Link>
           <Link href="#faq" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">FAQ</Link>
@@ -62,7 +63,15 @@ export default function MarketingHeader() {
 
       {/* Mobile Menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden absolute top-20 left-0 w-full bg-background border-b border-border p-4 flex flex-col gap-4 shadow-xl">
+        <div className="md:hidden absolute top-20 left-0 w-full bg-background/95 backdrop-blur-xl border-b border-border p-4 flex flex-col gap-3 shadow-xl z-50">
+          <Link 
+            href="/#scan-section" 
+            onClick={() => setMobileMenuOpen(false)} 
+            className="px-4 py-2.5 text-sm font-semibold bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 rounded-lg flex items-center justify-between"
+          >
+            <span>Scan / Upload Image</span>
+            <span className="text-xs px-2 py-0.5 rounded-full bg-emerald-600 text-white">Live AI</span>
+          </Link>
           <Link href="#features" onClick={() => setMobileMenuOpen(false)} className="px-4 py-2 text-sm font-medium hover:bg-secondary rounded-md">Features</Link>
           <Link href="#modules" onClick={() => setMobileMenuOpen(false)} className="px-4 py-2 text-sm font-medium hover:bg-secondary rounded-md">Modules</Link>
           <Link href="#faq" onClick={() => setMobileMenuOpen(false)} className="px-4 py-2 text-sm font-medium hover:bg-secondary rounded-md">FAQ</Link>
