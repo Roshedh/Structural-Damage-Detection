@@ -6,6 +6,10 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
+  serverExternalPackages: ["onnxruntime-node", "jimp"],
+  outputFileTracingIncludes: {
+    '/api/detect-damage': ['./public/damage_model.onnx'],
+  },
   devIndicators: {
     appIsrStatus: false,
     buildActivity: false,
