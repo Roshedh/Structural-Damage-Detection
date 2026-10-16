@@ -4,9 +4,10 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import MarketingHeader from "@/components/marketing-header"
 import Image from "next/image"
-import { ArrowRight, ShieldCheck, Zap, Activity, BrainCircuit, ChevronDown, CheckCircle2, Hexagon } from "lucide-react"
+import { ArrowRight, ShieldCheck, Zap, Activity, BrainCircuit, ChevronDown, CheckCircle2, Hexagon, ScanLine } from "lucide-react"
 import { Card } from "@/components/ui/card"
 import { motion } from "framer-motion"
+import ImageUploader from "@/components/image-uploader"
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -86,16 +87,16 @@ export default function Home() {
             </motion.p>
 
             {/* CTAs */}
-            <motion.div variants={fadeUp} className="flex flex-row justify-center items-center gap-4 sm:gap-6 mt-4">
-              <Link href="/dashboard" className="relative group inline-block">
-                <div className="absolute -inset-1 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-lg blur opacity-30 group-hover:opacity-75 transition duration-500"></div>
-                <Button size="lg" className="relative text-base sm:text-lg h-12 sm:h-14 px-6 sm:px-8 bg-emerald-600 text-white hover:bg-emerald-700 border-none transition-all w-full sm:w-auto shadow-lg shadow-emerald-900/20">
-                  Launch Console <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
+            <motion.div variants={fadeUp} className="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-6 mt-4 w-full sm:w-auto">
+              <a href="#scan-section" className="relative group inline-block w-full sm:w-auto">
+                <div className="absolute -inset-1 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-lg blur opacity-40 group-hover:opacity-85 transition duration-500"></div>
+                <Button size="lg" className="relative text-base sm:text-lg h-12 sm:h-14 px-6 sm:px-8 bg-emerald-600 text-white hover:bg-emerald-700 border-none transition-all w-full shadow-lg shadow-emerald-900/20">
+                  <ScanLine className="mr-2 w-5 h-5" /> Start Scan Now
                 </Button>
-              </Link>
-              <Link href="#features" className="inline-block">
-                <Button size="lg" variant="outline" className="text-base sm:text-lg h-12 sm:h-14 px-6 sm:px-8 border-border/50 hover:bg-emerald-500/10 hover:text-emerald-600 dark:hover:text-emerald-400 backdrop-blur-sm transition-all w-full sm:w-auto">
-                  Explore Features
+              </a>
+              <Link href="/dashboard" className="inline-block w-full sm:w-auto">
+                <Button size="lg" variant="outline" className="text-base sm:text-lg h-12 sm:h-14 px-6 sm:px-8 border-border/50 hover:bg-emerald-500/10 hover:text-emerald-600 dark:hover:text-emerald-400 backdrop-blur-sm transition-all w-full">
+                  Launch Console <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5" />
                 </Button>
               </Link>
             </motion.div>
@@ -103,6 +104,25 @@ export default function Home() {
 
           {/* Bottom Fade */}
           <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-background to-transparent z-10 pointer-events-none"></div>
+        </section>
+
+        {/* Live Scan & Upload Section (Directly visible on Mobile & Desktop) */}
+        <section id="scan-section" className="relative py-12 md:py-20 bg-background border-b border-border scroll-mt-20">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6">
+            <div className="text-center mb-8">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-500 dark:text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-3">
+                <ScanLine className="w-4 h-4" /> Live AI Inspection
+              </div>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight mb-3">
+                Scan & Upload Structural Image
+              </h2>
+              <p className="text-sm sm:text-base text-muted-foreground max-w-2xl mx-auto font-light">
+                Take a photo or upload an image directly from your mobile camera or file storage to detect cracks, corrosion, and structural anomalies instantly.
+              </p>
+            </div>
+
+            <ImageUploader />
+          </div>
         </section>
 
         {/* Features Section */}
