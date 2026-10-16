@@ -44,7 +44,7 @@ export default function ImageUploader() {
   const handleFileSelect = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0]
     if (!file) return
-
+    
     try {
       setError(null)
       setResults(null)
@@ -116,24 +116,24 @@ export default function ImageUploader() {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className="max-w-7xl mx-auto px-6 py-12"
+      className="max-w-7xl mx-auto px-2 sm:px-6 py-4 md:py-12"
     >
       {serverReady ? (
-        <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} className="mb-6 p-3 bg-green-500/10 border border-green-500/30 rounded-lg">
-          <p className="text-green-400 text-sm">AI damage detection ready - running in browser</p>
+        <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} className="mb-4 sm:mb-6 p-3 bg-green-500/10 border border-green-500/30 rounded-lg">
+          <p className="text-green-400 text-xs sm:text-sm">AI damage detection ready - running in browser</p>
         </motion.div>
       ) : (
-        <div className="mb-6 p-3 bg-emerald-500/10 border border-emerald-500/30 rounded-lg">
-          <p className="text-emerald-400 text-sm">Loading AI model...</p>
+        <div className="mb-4 sm:mb-6 p-3 bg-emerald-500/10 border border-emerald-500/30 rounded-lg">
+          <p className="text-emerald-400 text-xs sm:text-sm">Loading AI model...</p>
         </div>
       )}
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
         {/* Upload Section */}
         <motion.div whileHover={{ y: -2 }} transition={{ type: "spring", stiffness: 300, damping: 20 }}>
           <Card className="bg-card/60 backdrop-blur-xl border-border/50 shadow-2xl overflow-hidden h-full flex flex-col">
-            <div className="p-8 flex-1 flex flex-col">
-              <h2 className="text-xl font-bold text-foreground mb-6 flex items-center gap-2">
+            <div className="p-4 sm:p-8 flex-1 flex flex-col">
+              <h2 className="text-lg sm:text-xl font-bold text-foreground mb-4 sm:mb-6 flex items-center gap-2">
                 <Upload className="w-5 h-5 text-primary" />
                 Upload Image
               </h2>
@@ -146,7 +146,7 @@ export default function ImageUploader() {
                 onDragOver={handleDragOver}
                 onDragLeave={handleDragLeave}
                 onDrop={handleDrop}
-                className={`flex-1 flex flex-col justify-center relative border-2 border-dashed rounded-xl p-12 text-center cursor-pointer transition-colors ${
+                className={`flex-1 flex flex-col justify-center relative border-2 border-dashed rounded-xl p-6 sm:p-12 text-center cursor-pointer transition-colors ${
                   isDragging ? "border-primary shadow-[0_0_30px_rgba(var(--primary),0.15)]" : "border-muted-foreground/30 hover:border-primary"
                 }`}
                 onClick={() => fileInputRef.current?.click()}
